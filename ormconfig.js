@@ -47,7 +47,7 @@ module.exports = {
     synchronize: false, // 生产环境禁用自动同步
     migrationsRun: true, // 自动运行迁移
     entities: [path.join(__dirname, '**/*.entity{.ts,.js}')],
-    migrations: [path.join(__dirname, 'migrations/*{.ts,.js}')],
+    migrations: [path.join(__dirname, '**/migrations/*{.ts,.js}')],
     ssl: {
         rejectUnauthorized: false, // 允许自签名证书
     },
