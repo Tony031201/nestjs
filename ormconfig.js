@@ -41,5 +41,15 @@ console.log('CLI Migration Directory:', dbConfig.cli.migrationsDir);
 console.log('Loaded environment:', process.env.NODE_ENV);
 console.log('Database configuration:', dbConfig);
 
-module.exports = dbConfig
+module.exports = {
+    type: 'postgres',
+    url: process.env.DATABASE_URL,
+    synchronize: false, // 生产环境禁用自动同步
+    migrationsRun: true, // 自动运行迁移
+    entities: [path.join(__dirname, '**/*.entity{.ts,.js}')],
+    migrations: [path.join(__dirname, 'migrations/*{.ts,.js}')],
+    ssl: {
+        rejectUnauthorized: false, // 允许自签名证书
+    },
+};
 
