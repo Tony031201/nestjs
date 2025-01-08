@@ -1,0 +1,22 @@
+###Sign up
+POST  http://localhost:3000/user/signup
+Content-Type: application/json
+
+{
+    "username":"tony1",
+    "answer":"Tony"
+}
+
+###Get current user
+GET http://localhost:3000/user/whoami
+
+###Sign out
+GET http://localhost:3000/user/signout
+
+###Sign in
+POST http://localhost:3000/user/signin
+Content-Type: application/json
+
+{
+    "username":"tony12"
+}

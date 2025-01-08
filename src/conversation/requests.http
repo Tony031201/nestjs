@@ -1,0 +1,10 @@
+###Get answer
+POST http://localhost:3000/conversation/pred
+Content-Type: application/json
+
+{
+    "question":"How to cook the soup?"
+}
+
+###Sign out
+GET http://localhost:3000/user/signout
