@@ -22,10 +22,10 @@ Content-Type: application/json
 }
 
 ###Get current user prod
-GET http://nestjs-production-f667.up.railway.app/user/whoami
+GET https://nestjs-production-f667.up.railway.app/user/whoami
 
 ###Sign up prod
-POST http://nestjs-production-f667.up.railway.app/user/signup
+POST https://nestjs-production-f667.up.railway.app/user/signup
 Content-Type: application/json
 
 {

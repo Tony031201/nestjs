@@ -24,6 +24,7 @@ switch (process.env.NODE_ENV){
         });
         break;
     case 'production':
+        console.log('In production env')
         Object.assign(dbConfig,{
             type:'postgres',
             url:process.env.DATABASE_URL,
@@ -36,7 +37,7 @@ switch (process.env.NODE_ENV){
         });
         break;
     default:
-        console.log(process.env.NODE_ENV)
+        console.log('ormconfig.js said: in ',process.env.NODE_ENV)
         throw new Error('unknown environment: ',process.env.NODE_ENV);
 };
 
