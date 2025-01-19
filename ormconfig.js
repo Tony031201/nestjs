@@ -1,3 +1,5 @@
+const path = require('path')
+
 var dbConfig = {
     synchronize: false,
     migrations: ['migrations/*.js'],
