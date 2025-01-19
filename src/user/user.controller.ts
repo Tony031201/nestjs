@@ -25,6 +25,7 @@ export class UserController {
 
     @Post('/signup')
     async signup(@Body() body:UserCreateDto,@Session() session:any){
+        console.log('signup function get:',body);
         if (body.answer.toLowerCase() === 'tony'){
             const user = await this.userService.createUser(body.username)
             session.userId = user.id;

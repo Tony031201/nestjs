@@ -13,6 +13,7 @@ export class ConversationController {
     @Post('/pred')
     async pred(@Body() body:CreateQuestionDto, @currentUser() user:User){
         const question = body.question;
+        console.log('From conversation controller: question is',question)
         const answer = await this.conversationService.getAnswer(body.question,user)
         console.log('From conversationController: I got answer ',answer)
         return answer

@@ -9,7 +9,7 @@ import { ConfigModule,ConfigService } from '@nestjs/config';
 import { User } from './user/user.entity';
 import { History } from './history/history.entity';
 const cookieSession = require('cookie-session')
-import * as dbConfig from '../ormconfig.js';
+const dbConfig = require('../ormconfig.js');
 import { TypeOrmConfigService } from './config/typeorm.config';
 
 @Module({
@@ -33,9 +33,7 @@ import { TypeOrmConfigService } from './config/typeorm.config';
     //     }
     //   }
     // })
-    TypeOrmModule.forRootAsync({
-      useClass:TypeOrmConfigService,
-    })
+    TypeOrmModule.forRoot(dbConfig)
   ],
   controllers: [AppController],
   providers: [AppService],
