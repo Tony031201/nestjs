@@ -19,7 +19,8 @@
     "test:debug": "cross-env NODE_ENV=test node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest --runInBand",
     "test:e2e": "cross-env NODE_ENV=test jest --config ./test/jest-e2e.json",
     "typeorm": "cross-env NODE_ENV=development typeorm-ts-node-commonjs -d src/data-source.ts",
-    "migration:generate": "npm run typeorm -- migration:generate"
+    "migration:generate": "npm run typeorm -- migration:generate",
+    "push": "git add . && git commit -m \"Update_backend \" && git push"
   },
   "dependencies": {
     "@nestjs/axios": "^3.1.3",
