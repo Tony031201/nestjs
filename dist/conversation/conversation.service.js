@@ -21,13 +21,21 @@ let ConversationService = class ConversationService {
     }
     async getAnswer(question, user) {
         try {
+            const pythonServiceUrl = process.env.PYTHON_SERVICE_URL;
+            console.log('From conversationService: Send the request to ', pythonServiceUrl);
             console.log('From conversationService: I got question ', question);
-            const response = await (0, rxjs_1.firstValueFrom)(this.httpService.post('http://localhost:8000/predict/', { question }));
+            const response = await (0, rxjs_1.firstValueFrom)(this.httpService.post(pythonServiceUrl, { question }));
             const answer = await response.data.answer;
             await this.historyService.createHistory(user, question, answer);
             return answer;
         }
         catch (error) {
+            console.error('Error communicating with Python service:', {
+                message: error.message,
+                config: error.config,
+                response: error.response?.data || 'No response data',
+                status: error.response?.status || 'No status',
+            });
             throw new Error(`Error communicating with Python service: ${error.message}`);
         }
     }

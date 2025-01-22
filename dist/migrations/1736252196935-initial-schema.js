@@ -35,7 +35,7 @@ class InitialSchema1736252196935 {
                 },
                 {
                     name: 'time',
-                    type: 'timestamp',
+                    type: 'datetime',
                     generationStrategy: 'increment',
                 },
                 {
