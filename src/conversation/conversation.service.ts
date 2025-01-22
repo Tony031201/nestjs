@@ -11,7 +11,7 @@ export class ConversationService {
     async getAnswer(question: string,user:User): Promise<string> {
         try {
             console.log('From conversationService: I got question ',question)
-            const pythonServiceUrl = 'https://fuzzyalgo-production.up.railway.app/predict';
+            const pythonServiceUrl = process.env.PYTHON_SERVICE_URL
             console.log('From conversationService: Send the request to ',pythonServiceUrl)
             const response = await firstValueFrom(
             this.httpService.post(pythonServiceUrl, { question }),
@@ -20,7 +20,13 @@ export class ConversationService {
           await this.historyService.createHistory(user,question,answer)
           return answer;
         } catch (error) {
-          throw new Error(`Error communicating with Python service: ${error.message}`);
+          console.error('Error communicating with Python service:', {
+            message: error.message,
+            config: error.config,
+            response: error.response?.data || 'No response data',
+            status: error.response?.status || 'No status',
+        });
+        throw new Error(`Error communicating with Python service: ${error.message}`);
         }
       }
 }
