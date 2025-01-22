@@ -11,8 +11,10 @@ export class ConversationService {
     async getAnswer(question: string,user:User): Promise<string> {
         try {
             console.log('From conversationService: I got question ',question)
+            const pythonServiceUrl = 'https://fuzzyalgo-production.up.railway.app/predict';
+            console.log('From conversationService: Send the request to ',pythonServiceUrl)
             const response = await firstValueFrom(
-            this.httpService.post('https://fuzzyalgo-production.up.railway.app/predict', { question }),
+            this.httpService.post(pythonServiceUrl, { question }),
           );
           const answer = await response.data.answer;
           await this.historyService.createHistory(user,question,answer)

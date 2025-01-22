@@ -27,4 +27,23 @@ Content-Type: application/json
 }
 
 ### get
-GET https://t5service-production.up.railway.app/
+GET https://fuzzyalgo-production.up.railway.app/
+
+### TEST ASK MODULE API
+POST https://fuzzyalgo-production.up.railway.app/predict
+Content-Type: application/json
+
+{
+    "question":"how cook the soup?"
+}
+
+### ask question online
+POST https://nestjs-production-f667.up.railway.app/conversation/pred
+Content-Type: application/json
+
+{
+    "question":"how cook the soup?"
+}
+
+###Get current user prod
+GET https://nestjs-production-f667.up.railway.app/user/whoami
