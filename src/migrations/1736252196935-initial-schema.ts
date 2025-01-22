@@ -36,8 +36,9 @@ export class InitialSchema1736252196935 implements MigrationInterface {
                     },
                     {
                         name: 'time',
-                        type: 'datetime',
-                        generationStrategy: 'increment',
+                        type: 'timestamp',
+                        isNullable: false,
+                        default: 'CURRENT_TIMESTAMP',
                     },
                     {
                         name: 'question',

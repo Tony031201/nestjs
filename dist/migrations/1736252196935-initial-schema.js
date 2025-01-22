@@ -35,8 +35,9 @@ class InitialSchema1736252196935 {
                 },
                 {
                     name: 'time',
-                    type: 'datetime',
-                    generationStrategy: 'increment',
+                    type: 'timestamp',
+                    isNullable: false, 
+                    default: 'CURRENT_TIMESTAMP',
                 },
                 {
                     name: 'question',
