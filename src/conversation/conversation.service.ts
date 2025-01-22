@@ -12,7 +12,7 @@ export class ConversationService {
         try {
             console.log('From conversationService: I got question ',question)
             const response = await firstValueFrom(
-            this.httpService.post('http://localhost:8000/predict/', { question }),
+            this.httpService.post('https://fuzzyalgo-production.up.railway.app/predict', { question }),
           );
           const answer = await response.data.answer;
           await this.historyService.createHistory(user,question,answer)

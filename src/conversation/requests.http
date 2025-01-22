@@ -8,3 +8,23 @@ Content-Type: application/json
 
 ###Sign out
 GET http://localhost:3000/user/signout
+
+### Ask local
+POST http://0.0.0.0:5000/predict/
+Content-Type: application/json
+
+{
+    "question":"how many minutes?"
+}
+
+
+### Ask
+POST https://t5service-production.up.railway.app/predict/
+Content-Type: application/json
+
+{
+    "question":"how cook the soup?"
+}
+
+### get
+GET https://t5service-production.up.railway.app/
