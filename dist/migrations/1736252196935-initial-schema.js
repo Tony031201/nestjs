@@ -36,7 +36,7 @@ class InitialSchema1736252196935 {
                 {
                     name: 'time',
                     type: 'timestamp',
-                    isNullable: false, 
+                    isNullable: false,
                     default: 'CURRENT_TIMESTAMP',
                 },
                 {

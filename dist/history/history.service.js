@@ -22,8 +22,7 @@ let HistoryService = class HistoryService {
         this.repo = repo;
     }
     createHistory(user, question, answer) {
-        const record = this.repo.create({ question, answer, user });
-        return this.repo.save(record);
+        return 0;
     }
 };
 exports.HistoryService = HistoryService;

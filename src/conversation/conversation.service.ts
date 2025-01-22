@@ -15,8 +15,9 @@ export class ConversationService {
             console.log('From conversationService: I got question ',question)
             
             const response = await firstValueFrom(
-            this.httpService.post(pythonServiceUrl, { question }),
-          );
+              this.httpService.post(pythonServiceUrl, { question }),
+            );
+            console.log('From conversationService: I got response ',question)
           const answer = await response.data.answer;
           await this.historyService.createHistory(user,question,answer)
           return answer;
