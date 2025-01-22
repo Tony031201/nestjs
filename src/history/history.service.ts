@@ -9,7 +9,7 @@ export class HistoryService {
     constructor(@InjectRepository(History) private repo:Repository<History>){}
 
     createHistory(user:User,question:string,answer:string){
-        const record = this.repo.create({question,answer,user})
+        const record = this.repo.create({question,answer,user,time:new Date()})
         return this.repo.save(record)
     }
 }
