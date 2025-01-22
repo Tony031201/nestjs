@@ -10,9 +10,10 @@ export class ConversationService {
 
     async getAnswer(question: string,user:User): Promise<string> {
         try {
-            console.log('From conversationService: I got question ',question)
             const pythonServiceUrl = process.env.PYTHON_SERVICE_URL
             console.log('From conversationService: Send the request to ',pythonServiceUrl)
+            console.log('From conversationService: I got question ',question)
+            
             const response = await firstValueFrom(
             this.httpService.post(pythonServiceUrl, { question }),
           );
