@@ -6,7 +6,7 @@ export class History{
     @PrimaryGeneratedColumn()
     id:number;
 
-    @CreateDateColumn()
+    @CreateDateColumn({ type: 'timestamp', nullable: false })
     time:Date;
 
     @Column()
