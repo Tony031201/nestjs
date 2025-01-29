@@ -23,12 +23,12 @@ async function bootstrap() {
   ///
 
   app.enableCors({
-    origin: 'http://localhost:5173', // 替换为你的前端地址
+    origin: 'http://localhost:4000', // 替换为你的前端地址
     credentials: true, // 允许跨域传递 cookie
   });
 
   app.use((req, res, next) => {
-    res.setHeader('Access-Control-Allow-Origin', 'http://localhost:5173');
+    res.setHeader('Access-Control-Allow-Origin', 'http://localhost:4000');
     res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');
     res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization');
     res.setHeader('Access-Control-Allow-Credentials', 'true');
