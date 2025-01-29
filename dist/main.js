@@ -5,6 +5,7 @@ const app_module_1 = require("./app.module");
 const dotenv = require("dotenv");
 const swagger_1 = require("@nestjs/swagger");
 dotenv.config();
+const session = require("express-session");
 async function bootstrap() {
     console.log('Start:');
     console.log('Loaded DATABASE:', process.env.DB_NAME);
@@ -22,16 +23,17 @@ async function bootstrap() {
         origin: 'http://localhost:5173',
         credentials: true,
     });
-    app.use((req, res, next) => {
-        res.setHeader('Access-Control-Allow-Origin', 'http://localhost:5173');
-        res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');
-        res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization');
-        res.setHeader('Access-Control-Allow-Credentials', 'true');
-        if (req.method === 'OPTIONS') {
-            res.sendStatus(204);
-        }
-        next();
-    });
+    app.use(session({
+        secret: this.configServer.get('COOKIE_KEY'),
+        resave: false,
+        saveUninitialized: false,
+        cookie: {
+            httpOnly: true,
+            secure: process.env.NODE_ENV === 'production',
+            sameSite: 'none',
+            maxAge: 1000 * 60 * 60 * 24,
+        },
+    }));
     await app.listen(process.env.PORT || 3000);
 }
 bootstrap();

@@ -35,8 +35,8 @@ async function bootstrap() {
       saveUninitialized: false,
       cookie: {
         httpOnly: true,          // 禁止 JS 访问
-        secure: false,     // HTTPS 下需要设置为 true
-        sameSite: 'lax',        // 允许跨域存储
+        secure: process.env.NODE_ENV === 'production',     // HTTPS 下需要设置为 true
+        sameSite: 'none',        // 允许跨域存储
         maxAge: 1000 * 60 * 60 * 24,
       },
     })
