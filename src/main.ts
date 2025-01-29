@@ -28,18 +28,6 @@ async function bootstrap() {
     credentials: true, // 允许跨域传递 cookie
   });
 
-  app.use((req, res, next) => {
-    res.setHeader('Access-Control-Allow-Origin', 'http://localhost:5173');
-    res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');
-    res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization');
-    res.setHeader('Access-Control-Allow-Credentials', 'true');
-    
-    if (req.method === 'OPTIONS') {
-      res.sendStatus(204); // 直接响应预检请求
-    } 
-    next();
-  });
-
   app.use(
     session({
       secret: this.configServer.get('COOKIE_KEY'),
@@ -47,7 +35,7 @@ async function bootstrap() {
       saveUninitialized: false,
       cookie: {
         httpOnly: true,          // 禁止 JS 访问
-        secure: process.env.NODE_ENV === 'production',           // HTTPS 下需要设置为 true
+        secure: false,           // HTTPS 下需要设置为 true
         sameSite: 'none',        // 允许跨域存储
       },
     })
