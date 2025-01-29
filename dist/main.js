@@ -19,8 +19,18 @@ async function bootstrap() {
     const document = swagger_1.SwaggerModule.createDocument(app, config);
     swagger_1.SwaggerModule.setup('api', app, document);
     app.enableCors({
-        origin: 'http://localhost:4000',
+        origin: 'http://localhost:5173',
         credentials: true,
+    });
+    app.use((req, res, next) => {
+        res.setHeader('Access-Control-Allow-Origin', 'http://localhost:5173');
+        res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');
+        res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization');
+        res.setHeader('Access-Control-Allow-Credentials', 'true');
+        if (req.method === 'OPTIONS') {
+            res.sendStatus(204);
+        }
+        next();
     });
     await app.listen(process.env.PORT || 3000);
 }
