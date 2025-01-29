@@ -24,7 +24,7 @@ async function bootstrap() {
   ///
 
   app.enableCors({
-    origin: 'http://localhost:5173', // 替换为你的前端地址
+    origin: 'https://my-frontend-neon.vercel.app', // 替换为你的前端地址
     credentials: true, // 允许跨域传递 cookie
   });
 
