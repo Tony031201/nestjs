@@ -3,7 +3,7 @@ import { AppModule } from './app.module';
 import * as dotenv from 'dotenv';
 import { SwaggerModule,DocumentBuilder } from '@nestjs/swagger'; //used for generating API document
 dotenv.config();
-import * as session from 'express-session';
+import * as session from 'express-session'
 
 async function bootstrap() {
   console.log('Start:')
@@ -30,14 +30,13 @@ async function bootstrap() {
 
   app.use(
     session({
-      secret: this.configServer.get('COOKIE_KEY'),
+      secret: this.configServer.get('COOKIE_KEY'),  
       resave: false,
       saveUninitialized: false,
       cookie: {
         httpOnly: true,          // 禁止 JS 访问
-        secure: process.env.NODE_ENV === 'production',     // HTTPS 下需要设置为 true
+        secure: true,           // HTTPS 下需要设置为 true
         sameSite: 'none',        // 允许跨域存储
-        maxAge: 1000 * 60 * 60 * 24,
       },
     })
   );
