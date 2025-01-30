@@ -44,7 +44,10 @@ export class AppModule {
 
   configure(consumer:MiddlewareConsumer){
     consumer.apply(cookieSession({
-      keys:[this.configServer.get('COOKIE_KEY')]
+      keys:[this.configServer.get('COOKIE_KEY')],
+      secure: process.env.NODE_ENV === 'production',
+      sameSite: 'none',                             // 跨域支持
+      httpOnly: true,   
     })).forRoutes('*')
   }
 }
