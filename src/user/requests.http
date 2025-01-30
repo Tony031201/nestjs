@@ -53,5 +53,11 @@ Content-Type: application/json
     "question":"how to cook soup?"
 }
 
+### ask question local
+POST http://localhost:3000/conversation/pred
+Content-Type: application/json
 
+{
+    "question":"how cook the soup?"
+}
 

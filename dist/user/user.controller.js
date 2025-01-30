@@ -32,6 +32,7 @@ let UserController = class UserController {
         if (body.answer.toLowerCase() === 'tony') {
             const user = await this.userService.createUser(body.username);
             session.userId = user.id;
+            console.log('from signup ,user is:', session.userId);
             return user;
         }
     }

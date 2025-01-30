@@ -19,13 +19,12 @@ let ConversationService = class ConversationService {
         this.httpService = httpService;
         this.historyService = historyService;
     }
-    async getAnswer(question, user) {
+    async getAnswer(question) {
         try {
             const pythonServiceUrl = process.env.PYTHON_SERVICE_URL;
             console.log('From conversationService:', question);
             const response = await (0, rxjs_1.firstValueFrom)(this.httpService.post(pythonServiceUrl, { question }));
             const answer = await response.data.answer;
-            await this.historyService.createHistory(user, question, answer);
             return answer;
         }
         catch (error) {

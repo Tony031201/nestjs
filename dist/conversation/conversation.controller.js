@@ -16,29 +16,25 @@ exports.ConversationController = void 0;
 const common_1 = require("@nestjs/common");
 const conversation_service_1 = require("./conversation.service");
 const create_question_dto_1 = require("./dtos/create-question.dto");
-const auth_guard_1 = require("../guards/auth.guard");
-const current_user_decorator_1 = require("../user/decorators/current-user.decorator");
-const user_entity_1 = require("../user/user.entity");
 let ConversationController = class ConversationController {
     constructor(conversationService) {
         this.conversationService = conversationService;
     }
-    async pred(body, user) {
+    async pred(body) {
+        console.log('From conversation controller: Enter');
         const question = body.question;
         console.log('From conversation controller: question is', question);
-        const answer = await this.conversationService.getAnswer(body.question, user);
+        const answer = await this.conversationService.getAnswer(body.question);
         console.log('From conversationController: I got answer ', answer);
         return answer;
     }
 };
 exports.ConversationController = ConversationController;
 __decorate([
-    (0, common_1.UseGuards)(auth_guard_1.AuthGuard),
     (0, common_1.Post)('/pred'),
     __param(0, (0, common_1.Body)()),
-    __param(1, (0, current_user_decorator_1.currentUser)()),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", [create_question_dto_1.CreateQuestionDto, user_entity_1.User]),
+    __metadata("design:paramtypes", [create_question_dto_1.CreateQuestionDto]),
     __metadata("design:returntype", Promise)
 ], ConversationController.prototype, "pred", null);
 exports.ConversationController = ConversationController = __decorate([

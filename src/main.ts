@@ -28,18 +28,18 @@ async function bootstrap() {
     credentials: true, // 允许跨域传递 cookie
   });
 
-  app.use(
-    session({
-      secret: 'sdadssd57',     // 替换为你的密钥
-      resave: false,
-      saveUninitialized: false,
-      cookie: {
-        httpOnly: true,
-        secure: true,                // HTTPS 环境中启用
-        sameSite: 'none',            // 允许跨域
-      },
-    })
-  );
+  // app.use(
+  //   session({
+  //     secret: 'sdadssd57',     // 替换为你的密钥
+  //     resave: false,
+  //     saveUninitialized: false,
+  //     cookie: {
+  //       httpOnly: true,
+  //       secure: true,                // HTTPS 环境中启用
+  //       sameSite: 'none',            // 允许跨域
+  //     },
+  //   })
+  // );
 
   await app.listen(process.env.PORT || 3000);
 }

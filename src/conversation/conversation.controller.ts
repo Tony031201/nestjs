@@ -9,6 +9,7 @@ import { User } from '../user/user.entity';
 export class ConversationController {
     constructor( private conversationService :ConversationService){}
 
+    
     @Post('/pred')
     async pred(@Body() body:CreateQuestionDto){
         console.log('From conversation controller: Enter')
