@@ -5,7 +5,6 @@ const app_module_1 = require("./app.module");
 const dotenv = require("dotenv");
 const swagger_1 = require("@nestjs/swagger");
 dotenv.config();
-const session = require("express-session");
 async function bootstrap() {
     console.log('Start:');
     console.log('Loaded DATABASE:', process.env.DB_NAME);
@@ -20,20 +19,9 @@ async function bootstrap() {
     const document = swagger_1.SwaggerModule.createDocument(app, config);
     swagger_1.SwaggerModule.setup('api', app, document);
     app.enableCors({
-        origin: 'http://localhost:5173',
+        origin: 'https://my-frontend-neon.vercel.app',
         credentials: true,
     });
-    app.use(session({
-        secret: this.configServer.get('COOKIE_KEY'),
-        resave: false,
-        saveUninitialized: false,
-        cookie: {
-            httpOnly: true,
-            secure: process.env.NODE_ENV === 'production',
-            sameSite: 'none',
-            maxAge: 1000 * 60 * 60 * 24,
-        },
-    }));
     await app.listen(process.env.PORT || 3000);
 }
 bootstrap();
