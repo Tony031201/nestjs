@@ -8,7 +8,7 @@ import { User } from 'src/user/user.entity';
 export class ConversationService {
     constructor(private readonly httpService: HttpService,private historyService:HistoryService) {}
 
-    async getAnswer(question: string,user:User): Promise<string> {
+    async getAnswer(question: string): Promise<string> {
         try {
             const pythonServiceUrl = process.env.PYTHON_SERVICE_URL
             console.log('From conversationService:',question)
@@ -17,7 +17,7 @@ export class ConversationService {
               this.httpService.post(pythonServiceUrl, { question }),
             );
           const answer = await response.data.answer;
-          await this.historyService.createHistory(user,question,answer)
+          // await this.historyService.createHistory(user,question,answer)
           return answer;
         } catch (error) {
           console.error('Error communicating with Python service:', {

@@ -9,12 +9,11 @@ import { User } from '../user/user.entity';
 export class ConversationController {
     constructor( private conversationService :ConversationService){}
 
-    @UseGuards(AuthGuard)
     @Post('/pred')
-    async pred(@Body() body:CreateQuestionDto, @currentUser() user:User){
+    async pred(@Body() body:CreateQuestionDto){
         const question = body.question;
         console.log('From conversation controller: question is',question)
-        const answer = await this.conversationService.getAnswer(body.question,user)
+        const answer = await this.conversationService.getAnswer(body.question)
         console.log('From conversationController: I got answer ',answer)
         return answer
     }
