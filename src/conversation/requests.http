@@ -19,7 +19,7 @@ Content-Type: application/json
 
 
 ### Ask
-POST https://t5service-production.up.railway.app/predict/
+POST https://fuzzyalgo-production.up.railway.app/predict
 Content-Type: application/json
 
 {

@@ -11,6 +11,7 @@ export class ConversationController {
 
     @Post('/pred')
     async pred(@Body() body:CreateQuestionDto){
+        console.log('From conversation controller: Enter')
         const question = body.question;
         console.log('From conversation controller: question is',question)
         const answer = await this.conversationService.getAnswer(body.question)

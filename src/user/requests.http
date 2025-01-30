@@ -34,7 +34,24 @@ Content-Type: application/json
 }
 
 ###Sign out prod
-GET http://lnestjs-production-f667.up.railway.app/user/signout
+GET http://nestjs-production-f667.up.railway.app/user/signout
+
+###Sign in prod
+POST https://nestjs-production-f667.up.railway.app/user/signin
+Content-Type: application/json
+
+{
+    "username":"tony1",
+    "answer":"Tony"
+}
+
+###ask directly
+POST https://fuzzyalgo-production.up.railway.app/predict
+Content-Type: application/json
+
+{
+    "question":"how to cook soup?"
+}
 
 
 
